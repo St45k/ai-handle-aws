@@ -1,0 +1,17 @@
+[Unit]
+Description=Grok AI Backend Handler
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/grok-handler
+ExecStart=/opt/grok-handler/venv/bin/python app.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=grok-handler
+
+[Install]
+WantedBy=multi-user.target
